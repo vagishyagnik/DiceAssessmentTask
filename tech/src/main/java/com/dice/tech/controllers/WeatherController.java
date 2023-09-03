@@ -25,7 +25,7 @@ public class WeatherController {
             return ResponseEntity.ok(this.weatherService.getHourlyForecastByLocationName(city));
         } catch (Exception e) {
             LOGGER.info(Arrays.toString(e.getStackTrace()));
-            return ResponseEntity.ok().build();
+            return ResponseEntity.internalServerError().build();
         }
     }
 
