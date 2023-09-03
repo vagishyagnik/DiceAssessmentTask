@@ -40,8 +40,6 @@ public class AccumulatedDataDeserializer extends StdDeserializer<AccumulatedData
         accmData.setLatitude(node.get("city").get("coord").get("lat").asText());
         accmData.setLongitude(node.get("city").get("coord").get("lon").asText());
         accmData.setTimezone(node.get("city").get("timezone").asLong());
-        accmData.setSunrise(node.get("city").get("sunrise").asLong());
-        accmData.setSunset(node.get("city").get("sunset").asLong());
         accmData.setCountry(node.get("city").get("country").asText());
 
         return accmData;

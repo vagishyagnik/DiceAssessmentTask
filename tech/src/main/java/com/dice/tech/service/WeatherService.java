@@ -31,7 +31,6 @@ public class WeatherService {
         String json = restTemplate.getForObject(url, String.class);
         ObjectMapper objectMapper = new ObjectMapper();
         AccumulatedData data = objectMapper.readValue(json, AccumulatedData.class);
-        System.out.println(data);
         return data;
     }
 
@@ -41,7 +40,6 @@ public class WeatherService {
         String json = restTemplate.getForObject(url, String.class);
         ObjectMapper objectMapper = new ObjectMapper();
         WeatherDataSummary data = objectMapper.readValue(json, WeatherDataSummary.class);
-        System.out.println(data);
         return data;
     }
 }

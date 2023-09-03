@@ -24,10 +24,6 @@ public class AccumulatedData {
 
     private Long timezone;
 
-    private Long sunrise;
-
-    private Long sunset;
-
     public List<WeatherData> getData() {
         return data;
     }
@@ -74,21 +70,5 @@ public class AccumulatedData {
 
     public void setTimezone(Long timezone) {
         this.timezone = timezone;
-    }
-
-    public Long getSunrise() {
-        return sunrise;
-    }
-
-    public void setSunrise(Long sunrise) {
-        this.sunrise = sunrise;
-    }
-
-    public Long getSunset() {
-        return sunset;
-    }
-
-    public void setSunset(Long sunset) {
-        this.sunset = sunset;
     }
 }
