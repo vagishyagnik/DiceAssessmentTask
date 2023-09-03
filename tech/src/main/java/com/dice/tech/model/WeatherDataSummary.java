@@ -1,6 +1,5 @@
 package com.dice.tech.model;
 
-import com.dice.tech.deserializers.AccumulatedDataDeserializer;
 import com.dice.tech.deserializers.WeatherDataSummaryDeserializer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -24,6 +23,8 @@ public class WeatherDataSummary {
     private String weatherIcon;
     private String weatherDescription;
     private Double windSpeed;
+    private Long sunrise;
+    private Long sunset;
 
     public String getLocation() {
         return location;
@@ -135,5 +136,21 @@ public class WeatherDataSummary {
 
     public void setWindSpeed(Double windSpeed) {
         this.windSpeed = windSpeed;
+    }
+
+    public Long getSunrise() {
+        return sunrise;
+    }
+
+    public void setSunrise(Long sunrise) {
+        this.sunrise = sunrise;
+    }
+
+    public Long getSunset() {
+        return sunset;
+    }
+
+    public void setSunset(Long sunset) {
+        this.sunset = sunset;
     }
 }
