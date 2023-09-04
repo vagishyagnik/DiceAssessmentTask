@@ -29,3 +29,11 @@ https://separate-tramp-production.up.railway.app/hourly-forecast
 https://separate-tramp-production.up.railway.app/forecast-summary
 https://separate-tramp-production.up.railway.app/unique-client-names
 ```
+
+### How header auth works
+Some APIs here required the header authentication & some didn't so those were divided into 2 different auth controllers, <br>
+1. Auth Controller (includes <b>login, signup, unique-client-names</b> endpoints)
+2. Weather Controller (includes <b>hourly-forecast, forecast-summary</b> endpoints)
+Conrollers not requiring HeaderAuthentication were marked with </b>@ExcludeHeaderInterceptor</b> annotation <br>
+Now the endpoints at weather controller surely needed a <b>header based</b> authentication so a whole system of <b>client credentials containing clientId(userId) & clientSecret/password (ofcourse encrypted) was implemented</b>. A Header interceptor was introduced which would check all requests <b>leaving out the request coming from classes annotated with ExcludeHeaderInterceptor & preflight requests (cors from browser)</b>. <br>
+<b>Now the logic inside HeaderInterceptor was simple just verify from the database that the clientId & clientSecret attached to the header are valid or not.</b>
