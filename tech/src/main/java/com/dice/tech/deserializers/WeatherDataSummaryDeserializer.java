@@ -36,7 +36,7 @@ public class WeatherDataSummaryDeserializer extends StdDeserializer<WeatherDataS
         weatherData.setWeatherIcon(node.get("weather").get(0).get("icon").asText());
         weatherData.setWeatherDescription(node.get("weather").get(0).get("main").asText());
         weatherData.setWindSpeed(node.get("wind").get("speed").asDouble());
-        weatherData.setSunset(node.get("sys").get("sunrise").asLong());
+        weatherData.setSunrise(node.get("sys").get("sunrise").asLong());
         weatherData.setSunset(node.get("sys").get("sunset").asLong());
 
         return weatherData;

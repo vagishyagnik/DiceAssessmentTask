@@ -1,5 +1,6 @@
 package com.dice.tech.controllers;
 
+import com.dice.tech.IncludeHeaderInterceptor;
 import com.dice.tech.service.WeatherService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import java.util.Arrays;
 
 @CrossOrigin
 @RestController
+@IncludeHeaderInterceptor
 public class WeatherController {
 
     Logger LOGGER = LoggerFactory.getLogger(WeatherController.class);
