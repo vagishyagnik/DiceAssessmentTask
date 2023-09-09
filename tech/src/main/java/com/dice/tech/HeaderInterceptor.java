@@ -5,7 +5,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.cors.reactive.PreFlightRequestHandler;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -19,8 +18,9 @@ public class HeaderInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (Objects.equals(request.getMethod(), "OPTIONS")) return true; // handling for preflight request
-        if (!canInterceptHeader(handler)) return true;
+        if (!canInterceptHeader(handler)) {
+            return true;
+        }
         String parsedClientId = request.getHeader("clientId");
         String clientSecret = request.getHeader("clientSecret");
         Long clientId;
@@ -46,9 +46,9 @@ public class HeaderInterceptor implements HandlerInterceptor {
         if (handler instanceof HandlerMethod handlerMethod) {
             // Check if the Controller class or method is marked with @ExcludeHeaderInterceptor
             // Exclude the interceptor for controllers/methods with the annotation
-            return !handlerMethod.hasMethodAnnotation(ExcludeHeaderInterceptor.class) &&
-                    !handlerMethod.getBeanType().isAnnotationPresent(ExcludeHeaderInterceptor.class); // Allow the request to proceed without interceptor checks
+            return handlerMethod.hasMethodAnnotation(IncludeHeaderInterceptor.class) ||
+                    handlerMethod.getBeanType().isAnnotationPresent(IncludeHeaderInterceptor.class); // Allow the request to proceed without interceptor checks
         }
-        return true;
+        return false;
     }
 }

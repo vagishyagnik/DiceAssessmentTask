@@ -1,6 +1,5 @@
 package com.dice.tech.controllers;
 
-import com.dice.tech.ExcludeHeaderInterceptor;
 import com.dice.tech.model.Client;
 import com.dice.tech.model.ClientBody;
 import com.dice.tech.service.ClientService;
@@ -15,7 +14,6 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@ExcludeHeaderInterceptor
 public class AuthController {
 
     Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
